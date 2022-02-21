@@ -8,8 +8,8 @@ let activeSlideIndex = 0;
 
 slideLeft.style.top = `-${(slidesLength - 1) * 100}vh`;
 
-// const link = document.querySelector('.left-slide');
-// link.addEventListener('mouseup', () => changeSlide('up'));
+const link = document.querySelector('.left-slide');
+link.addEventListener('mouseup', () => changeSlide('up'));
 
 upButton.addEventListener('click', () => changeSlide('down'));
 downButton.addEventListener('click', () => changeSlide('up'));
