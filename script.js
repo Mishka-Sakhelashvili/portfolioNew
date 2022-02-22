@@ -1,19 +1,29 @@
-const sliderContainer = document.querySelector('.slider-container');
+const sliderContainer = document.querySelector('.mainContainer');
 const slideRight = document.querySelector('.right-slide');
 const slideLeft = document.querySelector('.left-slide');
 const upButton = document.querySelector('.up-button');
 const downButton = document.querySelector('.down-button');
 const slidesLength = slideRight.querySelectorAll('div').length;
+
+// toggle menu active
+const menuTbn = document.querySelector(".menu-btn");
+const menuElement = document.querySelector(".navigation");
+menuTbn.addEventListener('click', () => toggleActiveMenu());
+function toggleActiveMenu() {
+    menuElement.classList.toggle("active");
+}
+
 let activeSlideIndex = 0;
 
 slideLeft.style.top = `-${(slidesLength - 1) * 100}vh`;
 
-const link = document.querySelector('.left-slide');
-link.addEventListener('mouseup', () => changeSlide('up'));
+// const link = document.querySelector('.left-slide');
+// link.addEventListener('mouseup', () => changeSlide('up'));
+
+
 
 upButton.addEventListener('click', () => changeSlide('down'));
 downButton.addEventListener('click', () => changeSlide('up'));
-// document.addEventListener('wheel', () => changeSlide('up'));
 document.addEventListener('wheel', function (event) {
     if (event.deltaY < 0) {
         changeSlide('down');
@@ -57,3 +67,6 @@ const changeSlide = (direction) => {
 
     console.log(activeSlideIndex);
 };
+
+
+
