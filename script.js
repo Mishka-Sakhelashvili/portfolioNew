@@ -14,10 +14,18 @@ const navFull = document.getElementById('navFull');
 const navMobile = document.getElementById('navMobile');
 const navResume = document.getElementById('navResume');
 const navContact = document.getElementById('navContact');
-
 const navArray = document.querySelectorAll(".navItem");
 
-
+// toggle menu active
+const menuTbn = document.querySelector(".menu-btn");
+const menuElement = document.querySelector(".navigation");
+function closeMenu() {
+    menuElement.classList.remove("active");
+}
+menuTbn.addEventListener('click', () => toggleActiveMenu());
+function toggleActiveMenu() {
+    menuElement.classList.toggle("active");
+}
 
 // const link = document.querySelector('.left-slide');
 // link.addEventListener('mouseup', () => changeSlide('up'));
@@ -40,15 +48,15 @@ document.addEventListener('keydown', (e) => e.keyCode === 38 && changeSlide('dow
 document.addEventListener('keydown', (e) => e.keyCode === 27 && changeSlide('top'));
 
 // გადამისამართება მენიუთი
-navHome.addEventListener('click', () => changeSlide('navHome'));
-navAbout.addEventListener('click', () => changeSlide('navAbout'));
-navServices.addEventListener('click', () => changeSlide('navServices'));
-navSkills.addEventListener('click', () => changeSlide('navSkills'));
-navFront.addEventListener('click', () => changeSlide('navFront'));
-navFull.addEventListener('click', () => changeSlide('navFull'));
-navMobile.addEventListener('click', () => changeSlide('navMobile'));
-navResume.addEventListener('click', () => changeSlide('navResume'));
-navContact.addEventListener('click', () => changeSlide('navContact'));
+navHome.addEventListener('click', () => { changeSlide('navHome'), closeMenu(); });
+navAbout.addEventListener('click', () => { changeSlide('navAbout'); closeMenu(); });
+navServices.addEventListener('click', () => { changeSlide('navServices'); closeMenu(); });
+navSkills.addEventListener('click', () => { changeSlide('navSkills'); closeMenu(); });
+navFront.addEventListener('click', () => { changeSlide('navFront'); closeMenu(); });
+navFull.addEventListener('click', () => { changeSlide('navFull'); closeMenu(); });
+navMobile.addEventListener('click', () => { changeSlide('navMobile'); closeMenu(); });
+navResume.addEventListener('click', () => { changeSlide('navResume'); closeMenu(); });
+navContact.addEventListener('click', () => { changeSlide('navContact'); closeMenu(); });
 
 
 function hide(element) {
@@ -151,13 +159,7 @@ const changeSlide = (direction) => {
     slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`;
 };
 
-// toggle menu active
-const menuTbn = document.querySelector(".menu-btn");
-const menuElement = document.querySelector(".navigation");
-menuTbn.addEventListener('click', () => toggleActiveMenu());
-function toggleActiveMenu() {
-    menuElement.classList.toggle("active");
-}
+
 
 
 
