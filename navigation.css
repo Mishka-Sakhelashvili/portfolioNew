@@ -103,7 +103,7 @@
 .actionButtons {
   position: absolute;
   background: transparent;
-  bottom: 30px;
+  bottom: 80px;
   left: 30%;
   height: 240px;
   width: 100px;
@@ -156,4 +156,8 @@
   background: var(--primaryColor);
   /* border-color: var(--dark); */
   color: var(--dark);
+}
+
+.hide {
+  display: none;
 }
