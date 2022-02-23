@@ -27,106 +27,7 @@ body {
   background-color: var(--white);
 }
 
-.navigation {
-  width: 30%;
-  height: 100%;
-  position: absolute;
-  left: -30%;
-  z-index: 1000;
-  transition: all 0.5s ease-in-out;
-  background-color: var(--dark);
-  padding: 40px;
-  font-family: 'Finger Paint', cursive;
-}
 
-.navigation.active {
-  left: 0;
-}
-
-.navigation .menu-btn {
-  cursor: pointer;
-  position: absolute;
-  right: -60px;
-  top: 30px;
-  z-index: 1000;
-  transition: all 0.5s ease-in-out;
-}
-
-.navigation.active .menu-btn {
-  right: 30px;
-}
-
-.navigation .menu-btn .bar1,
-.navigation .menu-btn .bar2,
-.navigation .menu-btn .bar3 {
-  width: 25px;
-  height: 3px;
-  background-color: var(--primaryColor);
-  margin: 6px 0;
-  transition: all 0.5s ease-in-out;
-  border-radius: var(--borderCorner);
-}
-
-.navigation.active .menu-btn .bar1,
-.navigation.active .menu-btn .bar2,
-.navigation.active .menu-btn .bar3 {
-  background-color: var(--white);
-}
-
-.navigation.active .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-7px, 5px);
-  transform: rotate(-45deg) translate(-7px, 5px);
-}
-
-.navigation.active .bar2 {
-  opacity: 0;
-}
-
-.navigation.active .bar3 {
-  -webkit-transform: rotate(45deg) translate(-7px, -5px);
-  transform: rotate(45deg) translate(-7px, -5px);
-}
-
-.navigation nav {
-  width: 100%;
-  height: 100%;
-}
-
-.navigation ul {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.navigation ul li {
-  width: 100%;
-  text-align: center;
-}
-
-.navigation ul a {
-  padding: 5px 15px;
-  color: var(--white);
-  font-size: 18px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.4s ease-in-out;
-}
-
-.navigation ul a:hover,
-.navigation ul a.active
-{
-  color: var(--primaryColor);
-}
-
-@media only screen and (max-width: 700px) {
-  .navigation {
-    width: 100%;
-    left: -100%;
-  }
-}
 
 .mainContainer {
   position: relative;
@@ -168,41 +69,65 @@ body {
   width: 100%;
 }
 
-button {
-  background-color: #fff;
-  border: none;
-  color: #aaa;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 15px;
-}
-
-button:hover {
-  color: #222;
-}
-
-button:focus {
-  outline: none;
-}
-
-.mainContainer .action-buttons button {
+.actionButtons {
   position: absolute;
+  background: transparent;
+  bottom: 30px;
   left: 30%;
-  top: 70%;
-  z-index: 100;
+  height: 240px;
+  width: 100px;
+  transform: translateX(-50%);
 }
 
-.mainContainer .action-buttons .down-button {
-  transform: translateX(-100%);
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+.arrowbtn {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  /* background: var(--dark); */
+  background: transparent;
+  border: 4px solid var(--primaryColor);
+  border-radius: 100px;
+  color: var(--primaryColor);
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
 }
 
-.mainContainer .action-buttons .up-button {
-  transform: translateY(-100%);
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+.arrowbtn:after {
+  position: absolute;
+  display: inline-block;
+  content: "";
+  width: 25px;
+  height: 25px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
 }
+
+.arrowbtn-up:after {
+  margin-left: -(25px * .5);
+  margin-top: -(25px * .25);
+  border-top: 4px solid;
+  border-left: 4px solid;
+}
+
+.arrowbtn-down {
+  bottom: 0px;
+}
+
+.arrowbtn-down:after {
+  margin-left: -(25px * .5);
+  margin-top: -(25px * .75);
+  border-bottom: 4px solid;
+  border-right: 4px solid;
+}
+
+
+.arrowbtn:hover {
+  background: var(--primaryColor);
+  /* border-color: var(--dark); */
+  color: var(--dark);
+}
+
 
 /* @media only screen and (max-width: 1000px) {
   

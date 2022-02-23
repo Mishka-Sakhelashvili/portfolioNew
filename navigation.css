@@ -1,0 +1,99 @@
+.navigation {
+  width: 30%;
+  height: 100%;
+  position: absolute;
+  left: -30%;
+  z-index: 1000;
+  transition: all 0.5s ease-in-out;
+  background-color: var(--dark);
+  padding: 40px;
+  font-family: 'Finger Paint', cursive;
+}
+
+.navigation.active {
+  left: 0;
+}
+
+.navigation .menu-btn {
+  cursor: pointer;
+  position: absolute;
+  right: -60px;
+  top: 30px;
+  z-index: 1000;
+  transition: all 0.5s ease-in-out;
+}
+
+.navigation.active .menu-btn {
+  right: 30px;
+}
+
+.navigation .menu-btn .bar1,
+.navigation .menu-btn .bar2,
+.navigation .menu-btn .bar3 {
+  width: 25px;
+  height: 3px;
+  background-color: var(--primaryColor);
+  margin: 6px 0;
+  transition: all 0.5s ease-in-out;
+  border-radius: var(--borderCorner);
+}
+
+.navigation.active .menu-btn .bar1,
+.navigation.active .menu-btn .bar2,
+.navigation.active .menu-btn .bar3 {
+  background-color: var(--white);
+}
+
+.navigation.active .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-7px, 5px);
+  transform: rotate(-45deg) translate(-7px, 5px);
+}
+
+.navigation.active .bar2 {
+  opacity: 0;
+}
+
+.navigation.active .bar3 {
+  -webkit-transform: rotate(45deg) translate(-7px, -5px);
+  transform: rotate(45deg) translate(-7px, -5px);
+}
+
+.navigation nav {
+  width: 100%;
+  height: 100%;
+}
+
+.navigation ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navigation ul li {
+  width: 100%;
+  text-align: center;
+}
+
+.navigation ul a {
+  padding: 5px 15px;
+  color: var(--white);
+  font-size: 18px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.4s ease-in-out;
+}
+
+.navigation ul a:hover,
+.navigation ul a.active {
+  color: var(--primaryColor);
+}
+
+@media only screen and (max-width: 700px) {
+  .navigation {
+    width: 100%;
+    left: -100%;
+  }
+}
