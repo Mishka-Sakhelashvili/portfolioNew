@@ -5,28 +5,24 @@ const upButton = document.querySelector('.arrowbtn-up');
 const downButton = document.querySelector('.arrowbtn-down');
 const slidesLength = slideRight.querySelectorAll('div').length;
 
-// toggle menu active
-const menuTbn = document.querySelector(".menu-btn");
-const menuElement = document.querySelector(".navigation");
-menuTbn.addEventListener('click', () => toggleActiveMenu());
-function toggleActiveMenu() {
-    menuElement.classList.toggle("active");
-}
+const navHome = document.getElementById('navHome');
+const navAbout = document.getElementById('navAbout');
+const navServices = document.getElementById('navServices');
+const navSkills = document.getElementById('navSkills');
+const navFront = document.getElementById('navFront');
+const navFull = document.getElementById('navFull');
+const navMobile = document.getElementById('navMobile');
+const navResume = document.getElementById('navResume');
+const navContact = document.getElementById('navContact');
 
-let activeSlideIndex = 0;
+const navArray = document.querySelectorAll(".navItem");
 
-slideLeft.style.top = `-${(slidesLength - 1) * 100}vh`;
+
 
 // const link = document.querySelector('.left-slide');
 // link.addEventListener('mouseup', () => changeSlide('up'));
 // upButton.classList.add("hide");
 
-
-
-
-
-upButton.addEventListener('click', () => changeSlide('down'));
-downButton.addEventListener('click', () => changeSlide('up'));
 // document.addEventListener('wheel', function (event) {
 //     if (event.deltaY < 0) {
 //         changeSlide('down');
@@ -35,14 +31,25 @@ downButton.addEventListener('click', () => changeSlide('up'));
 //         changeSlide('up');
 //     }
 // });
-
+let activeSlideIndex = 0;
+slideLeft.style.top = `-${(slidesLength - 1) * 100}vh`;
+upButton.addEventListener('click', () => changeSlide('down'));
+downButton.addEventListener('click', () => changeSlide('up'));
 document.addEventListener('keydown', (e) => e.keyCode === 40 && changeSlide('up'));
 document.addEventListener('keydown', (e) => e.keyCode === 38 && changeSlide('down'));
 document.addEventListener('keydown', (e) => e.keyCode === 27 && changeSlide('top'));
 
-// var test = document.querySelector('.skillsbtn');
-// test.addEventListener('click', () => changeSlide('skills'));
 // გადამისამართება მენიუთი
+navHome.addEventListener('click', () => changeSlide('navHome'));
+navAbout.addEventListener('click', () => changeSlide('navAbout'));
+navServices.addEventListener('click', () => changeSlide('navServices'));
+navSkills.addEventListener('click', () => changeSlide('navSkills'));
+navFront.addEventListener('click', () => changeSlide('navFront'));
+navFull.addEventListener('click', () => changeSlide('navFull'));
+navMobile.addEventListener('click', () => changeSlide('navMobile'));
+navResume.addEventListener('click', () => changeSlide('navResume'));
+navContact.addEventListener('click', () => changeSlide('navContact'));
+
 
 function hide(element) {
     element.classList.add("hide");
@@ -52,7 +59,12 @@ function show(element) {
 }
 hide(upButton);
 
+navHome.classList.add("active");
+
 const changeSlide = (direction) => {
+    for (var i = 0; i < navArray.length; i++) {
+        navArray[i].classList.remove("active");
+    }
     const sliderHeight = sliderContainer.clientHeight;
     if (direction === 'up') {
         activeSlideIndex++;
@@ -80,15 +92,72 @@ const changeSlide = (direction) => {
             show(downButton);
         }
     } else if (direction === 'top') {
-        // activeSlideIndex = 0;
+        activeSlideIndex = 0;
+    } else if (direction === 'navHome') {
+        hide(upButton);
+        show(downButton);
+        navHome.classList.add("active");
+        activeSlideIndex = 0;
     }
-    // else if (direction === 'skills') {
-    //     activeSlideIndex = 6;
-    //     // გადამისამართება მენიუთი
-    // }
+    else if (direction === 'navAbout') {
+        show(upButton);
+        show(downButton);
+        navAbout.classList.add("active");
+        activeSlideIndex = 1;
+    }
+    else if (direction === 'navServices') {
+        show(upButton);
+        show(downButton);
+        navServices.classList.add("active");
+        activeSlideIndex = 2;
+    }
+    else if (direction === 'navSkills') {
+        show(upButton);
+        show(downButton);
+        navSkills.classList.add("active");
+        activeSlideIndex = 3;
+    }
+    else if (direction === 'navFront') {
+        show(upButton);
+        show(downButton);
+        navFront.classList.add("active");
+        activeSlideIndex = 4;
+    }
+    else if (direction === 'navFull') {
+        show(upButton);
+        show(downButton);
+        navFull.classList.add("active");
+        activeSlideIndex = 5;
+    }
+    else if (direction === 'navMobile') {
+        show(upButton);
+        show(downButton);
+        navMobile.classList.add("active");
+        activeSlideIndex = 6;
+    }
+    else if (direction === 'navResume') {
+        show(upButton);
+        show(downButton);
+        navResume.classList.add("active");
+        activeSlideIndex = 7;
+    }
+    else if (direction === 'navContact') {
+        show(upButton);
+        hide(downButton);
+        navContact.classList.add("active");
+        activeSlideIndex = 8;
+    }
     slideRight.style.transform = `translateY(-${activeSlideIndex * sliderHeight}px)`;
     slideLeft.style.transform = `translateY(${activeSlideIndex * sliderHeight}px)`;
 };
+
+// toggle menu active
+const menuTbn = document.querySelector(".menu-btn");
+const menuElement = document.querySelector(".navigation");
+menuTbn.addEventListener('click', () => toggleActiveMenu());
+function toggleActiveMenu() {
+    menuElement.classList.toggle("active");
+}
 
 
 
