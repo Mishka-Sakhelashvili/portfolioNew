@@ -72,9 +72,12 @@ $(document).ready(function () {
     ctx.globalCompositeOperation = "screen";
     particles = [];
     var osonix = 150;
-    if (ww < 800) {
+    if (ww < 700) {
         osonix = 100
     }
+    if (ww < 400) {
+      osonix = 70
+  }
     for (var i = 0; i < ww; i += Math.round(ww / osonix)) {
       for (var j = 0; j < wh; j += Math.round(ww / osonix)) {
         if (data[((i + j * ww) * 4) + 3] > osonix) {
@@ -92,12 +95,6 @@ $(document).ready(function () {
       particles[i].render();
     }
   };
-
-  // window.addEventListener("resize", initScene);
-  // window.addEventListener("mousemove", onMouseMove);
-  // window.addEventListener("touchmove", onTouchMove);
-  // window.addEventListener("touchend", onTouchEnd);
-  // window.addEventListener("click", onMouseClick);
   initScene();
   requestAnimationFrame(render);
 });
