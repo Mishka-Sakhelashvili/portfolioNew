@@ -17,7 +17,7 @@
 body {
   height: 100vh;
   background-color: var(--dark);
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .dark {
@@ -28,7 +28,6 @@ body {
   background-color: var(--white);
 }
 
-
 .mainContainer {
   position: relative;
   overflow: hidden;
@@ -36,7 +35,7 @@ body {
   height: 100vh;
 }
 
-.left-slide {
+.leftContainer {
   height: 100%;
   width: 30%;
   position: absolute;
@@ -45,35 +44,31 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
-.left-slide>div {
-  overflow: hidden;
+.leftContainer .leftSide {
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #CC6600;
 }
 
-.right-slide {
-  color: #CC6600;
-  font-size: 38px;
+.rightContainer {
   height: 100%;
   position: absolute;
   top: 0;
   left: 30%;
   width: 70%;
   transition: all 0.5s ease-in-out;
-  
 }
 
-.right-slide>div {
+.rightContainer .rightSide {
   height: 100%;
   width: 100%;
-  padding: 50px;
+  overflow: hidden;
+  position: relative;
 }
 
+.content {
+  width: 100%;
+  height: 100%;
+}
 
 
 

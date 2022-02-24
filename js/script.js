@@ -1,9 +1,9 @@
 const sliderContainer = document.querySelector('.mainContainer');
-const slideRight = document.querySelector('.right-slide');
-const slideLeft = document.querySelector('.left-slide');
+const slideRight = document.querySelector('.rightContainer');
+const slideLeft = document.querySelector('.leftContainer');
 const upButton = document.querySelector('.arrowbtn-up');
 const downButton = document.querySelector('.arrowbtn-down');
-const slidesLength = slideRight.querySelectorAll('div').length;
+const slidesLength = slideRight.querySelectorAll('.rightSide').length;
 
 const navHome = document.getElementById('navHome');
 const navAbout = document.getElementById('navAbout');
