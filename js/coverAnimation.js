@@ -13,11 +13,12 @@ $(document).ready(function () {
   // anime text is TEXT variables
   var TEXT = "Portfolio";
   //var TEXT = "00000000";
-  // if (window.innerWidth < 700) {
+  // if (document.querySelector(".canvas").offsetWidth < 700) {
   //   TEXT = "P o r t f o l i o";
   // }
-  var ww = canvas.width = window.innerWidth;
+
   var wh = canvas.height = window.innerHeight;
+  var ww = canvas.width = document.querySelector(".canvas").offsetWidth;
 
   function Particle(x, y) {
     this.x = Math.random() * ww;
@@ -59,49 +60,29 @@ $(document).ready(function () {
     }
   };
 
-  function onMouseMove(e) {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  }
-
-  function onTouchMove(e) {
-    if (e.touches.length > 0) {
-      mouse.x = e.touches[0].clientX;
-      mouse.y = e.touches[0].clientY;
-    }
-  }
-
-  function onTouchEnd(e) {
-    mouse.x = -9999;
-    mouse.y = -9999;
-  }
-
   function initScene() {
-    ww = canvas.width = window.innerWidth;
+    ww = document.querySelector(".canvas").offsetWidth;
     wh = canvas.height = window.innerHeight;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = "bold " + (ww / 7) + "px sans-serif";
+    ctx.font = "bold " + (ww / 6) + "px sans-serif";
     ctx.textAlign = "center";
     ctx.fillText(TEXT, ww / 2, wh / 2);
     var data = ctx.getImageData(0, 0, ww, wh).data;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.globalCompositeOperation = "screen";
     particles = [];
-    for (var i = 0; i < ww; i += Math.round(ww / 150)) {
-      for (var j = 0; j < wh; j += Math.round(ww / 150)) {
-        if (data[((i + j * ww) * 4) + 3] > 150) {
+    var osonix = 150;
+    if (ww < 800) {
+        osonix = 100
+    }
+    for (var i = 0; i < ww; i += Math.round(ww / osonix)) {
+      for (var j = 0; j < wh; j += Math.round(ww / osonix)) {
+        if (data[((i + j * ww) * 4) + 3] > osonix) {
           particles.push(new Particle(i, j));
         }
       }
     }
     amount = particles.length;
-  }
-
-  function onMouseClick() {
-    radius++;
-    if (radius === 5) {
-      radius = 0;
-    }
   }
 
   function render(a) {
@@ -112,13 +93,11 @@ $(document).ready(function () {
     }
   };
 
-  window.addEventListener("resize", initScene);
-  window.addEventListener("mousemove", onMouseMove);
-  window.addEventListener("touchmove", onTouchMove);
-  window.addEventListener("click", onMouseClick);
-  window.addEventListener("touchend", onTouchEnd);
+  // window.addEventListener("resize", initScene);
+  // window.addEventListener("mousemove", onMouseMove);
+  // window.addEventListener("touchmove", onTouchMove);
+  // window.addEventListener("touchend", onTouchEnd);
+  // window.addEventListener("click", onMouseClick);
   initScene();
   requestAnimationFrame(render);
-
 });
-
