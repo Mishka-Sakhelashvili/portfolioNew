@@ -13,9 +13,9 @@ $(document).ready(function () {
   // anime text is TEXT variables
   var TEXT = "Portfolio";
   //var TEXT = "00000000";
-  // if (document.querySelector(".canvas").offsetWidth < 700) {
-  //   TEXT = "P o r t f o l i o";
-  // }
+  if (document.querySelector(".canvas").offsetWidth < 500) {
+    TEXT = "P o r t f o l i o";
+  }
 
   var wh = canvas.height = window.innerHeight;
   var ww = canvas.width = document.querySelector(".canvas").offsetWidth;
@@ -73,11 +73,11 @@ $(document).ready(function () {
     particles = [];
     var osonix = 150;
     if (ww < 700) {
-        osonix = 100
+      osonix = 100;
     }
     if (ww < 400) {
-      osonix = 70
-  }
+      osonix = 70;
+    }
     for (var i = 0; i < ww; i += Math.round(ww / osonix)) {
       for (var j = 0; j < wh; j += Math.round(ww / osonix)) {
         if (data[((i + j * ww) * 4) + 3] > osonix) {
